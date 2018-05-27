@@ -10974,10 +10974,142 @@ exports.default = _class;
   \*******************************/
 /*! dynamic exports provided */
 /*! all exports used */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-throw new Error("Module build failed: SyntaxError: Unexpected token (108:1)\n\n\u001b[0m \u001b[90m 106 | \u001b[39m    }\u001b[33m;\u001b[39m\n \u001b[90m 107 | \u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 108 | \u001b[39m}\n \u001b[90m     | \u001b[39m \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n");
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _phaser = __webpack_require__(/*! phaser */ 46);
+
+var _phaser2 = _interopRequireDefault(_phaser);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Player = function (_Phaser$Sprite) {
+    _inherits(Player, _Phaser$Sprite);
+
+    function Player(game, x, y) {
+        _classCallCheck(this, Player);
+
+        var _this = _possibleConstructorReturn(this, (Player.__proto__ || Object.getPrototypeOf(Player)).call(this, game, x, y, 'player'));
+
+        _this.game.physics.arcade.enableBody(_this);
+        return _this;
+    }
+
+    _createClass(Player, [{
+        key: 'preload',
+        value: function preload() {
+            // load character sprites
+            // player
+            // frame size is 32 x 32; 12 frame cells
+            this.load.spritesheet('player', './resources/player/iceKing.png', { frameWidth: 32, frameHeight: 32, endFrame: 12 });
+        }
+    }, {
+        key: 'create',
+        value: function create() {
+            this.player.setBounce(0.2);
+            this.player.setCollideWorldBounds(true);
+
+            // animations
+            this.anims.create({
+                key: 'left',
+                frames: this.anims.generateFrameNumbers('player', { start: 3, end: 5 }),
+                frameRate: 10,
+                repeat: -1
+            });
+
+            this.anims.create({
+                key: 'up',
+                frames: [{ key: 'player', frame: 4 }],
+                frameRate: 20
+            });
+
+            this.anims.create({
+                key: 'right',
+                frames: this.anims.generateFrameNumbers('player', { start: 6, end: 8 }),
+                frameRate: 10,
+                repeat: -1
+            });
+
+            this.anims.create({
+                key: 'down',
+                frames: this.anims.generateFrameNumbers('player', { start: 0, end: 2 }),
+                frameRate: 20
+            });
+
+            function moveCharacter(player) {
+                if (this.player.exists) {
+                    this.player.body.velocity.x = 0;
+                    this.player.body.velocity.y = 0;
+
+                    if (this._directions.right.isDown) {
+                        this.player.body.velocity.x = this._heroSpeed;
+                        if (this._direction != 'right') {
+                            this.player.animations.play('right');
+                            this._direction = 'right';
+                            console.log("test");
+                        }
+                    } else if (this._directions.left.isDown) {
+                        this.player.body.velocity.x = -this._heroSpeed;
+                        if (this._direction != 'left') {
+                            this.player.animations.play('left');
+                            this._direction = 'left';
+                        }
+                    } else if (this._directions.up.isDown) {
+                        this.player.body.velocity.y = -this._heroSpeed;
+                        if (this._direction != 'up') {
+                            this.player.animations.play('up');
+                            this._direction = 'up';
+                        }
+                    } else if (this._directions.down.isDown) {
+                        this.player.body.velocity.y = this._heroSpeed;
+                        if (this._direction != 'down') {
+                            this.player.animations.play('down');
+                            this._direction = 'down';
+                        }
+                    } else if (this._direction != 'stop') {
+                        this.player.animations.stop();
+                        this._direction = 'stop';
+                    }
+                }
+            };
+
+            function useBomb() {
+                if (this._put_bomb.isDown) {
+                    this.putBomb(this.player);
+                } else if (this._exploit_bomb.isDown) {
+                    this.exploitBomb(this._bombs.getFirstAlive());
+                }
+            };
+        }
+    }, {
+        key: 'update',
+        value: function update() {
+            // keyboard controls
+            if (game.input.keyboard.isDown(_phaser2.default.keyboard.left)) {
+                this.player.x++;
+                console.log('left');
+            }
+        }
+    }]);
+
+    return Player;
+}(_phaser2.default.Sprite);
+
+exports.default = Player;
 
 /***/ }),
 /* 337 */
