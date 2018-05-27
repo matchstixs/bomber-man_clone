@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.5" orientation="orthogonal" renderorder="right-down" width="11" height="11" tilewidth="32" tileheight="32" infinite="0" nextobjectid="1">
+ <tileset firstgid="1" source="developer/LPC_Terrain/Terrain.tsx"/>
+ <layer name="Tile Layer 1" width="11" height="11">
+  <data encoding="base64" compression="zlib">
+   eJy7xsjAcJ0IfAOIvwHxdyLwDyS1YUz46R+j5pJlrhhQnzgRWAKIAdK+YEQ=
+  </data>
+ </layer>
+</map>

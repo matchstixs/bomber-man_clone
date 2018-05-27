@@ -1,0 +1,31 @@
+{ "height":11,
+ "infinite":false,
+ "layers":[
+        {
+         "compression":"zlib",
+         "data":"eJy7zMjAcIUIfBWIPwOxKRMDgwkQf2GEYFMkNgx\/hao1BsoZMSFoEzQaWS0+c02xqAXpR6eNsZgLYuMy1xhNLbr78LnXBGofDMPcD+OjuwHdfeg0tnCA0TAx5HAQBrJFiMCiQAwAQRlBMQ==",
+         "encoding":"base64",
+         "height":11,
+         "name":"Tile Layer 1",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":11,
+         "x":0,
+         "y":0
+        }],
+ "nextobjectid":1,
+ "orientation":"orthogonal",
+ "renderorder":"right-down",
+ "tiledversion":"1.1.5",
+ "tileheight":32,
+ "tilesets":[
+        {
+         "firstgid":1,
+         "source":"..\/Downloads\/LPC_Terrain\/Terrain.tsx"
+        }],
+ "tilewidth":32,
+ "type":"map",
+ "version":1,
+ "width":11
+}
